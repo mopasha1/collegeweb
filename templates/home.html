@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-wC/NG4AQa6NqQvMzfpkAfcd3TPSIm6p5JOXBsMMsdq0l/3ln+5LZ+7XbgN3CkP+8P8OZhlvTRoFR5rHcTphxNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: white;
+            padding-top: 70px; /* Adjusting padding for navbar */
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">Professor Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/discussions">Discussions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/faqs">FAQs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload">Upload</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <center><h1>SREENIDHI MAP</h1></center>
+        <h2>Explore Sreenidhi</h2>
+        <p>The SNIST campus covers 33 acres (130,000 m2). It is located in Yanampet of Ghatkesar Mandal in Rangareddy district of Telangana, India.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://media.licdn.com/dms/image/C561BAQGoY66aEX6qXQ/company-background_10000/0/1593585933087/sreenidhi_institure_of_science_and_technology_cover?e=2147483647&v=beta&t=i8NnCCDcAW_swivl49zT3mvRSRowHAYMmsk8PTLXeis" class="img-fluid" alt="SNIST Campus Image">
+            </div>
+            <div class="col-md-6">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTOp9JAOQbqoakD26K9c0kdZkLwbkLTWWnAA&usqp=CAU" class="img-fluid" alt="SNIST Campus Image">
+            </div>
+        </div>
+        <br />
+        <h3>Sreenidhi Campus: Timelapse</h3>
+        <div class="video-container">
+            <iframe width="560" height="315" src="{{url_for('static', filename="/public/0310.mp4")}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

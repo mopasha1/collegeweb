@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+body {
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.collapsible {
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.active, .collapsible:hover {
+  background-color: #333;
+}
+
+.collapsible:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+  margin-bottom: 10px;
+}
+</style>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Professor Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/discussions">Discussions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/faqs">FAQs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/upload">Upload</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+<div class="container">
+    <h2>FAQs</h2><br><br>
+
+    <button class="collapsible">1)	What should I bring to my Hostel?</button>
+    <div class="content">
+        <p>1.	Locks
+            2.	Table Lamps
+            3.	Broom, Dust cleaning brush
+            4.	Dusting Cloth
+            5.	Dustbins and Dustbin polybags
+            6.	Doormats
+            Toiletries
+            1.	Bathing Soaps
+            2.	Shampoo
+            3.	Face Packs
+            4.	Hair Oil/Gel
+            5.	Comb
+            6.	Toothbrushes, Toothpaste
+            7.	Shaving Kit
+            8.	Washing Powder and Brush
+            9.	Buckets and mugs
+            10.	Hand wash 
+            Cosmetics
+            1.	Powder
+            2.	Deodorants (you will need it!)
+            3.	Creams and Moisturisers
+            Miscellaneous and Stationary
+            1.	Medicines
+            2.	School Bag
+            3.	Textbooks from book lending scheme
+            4.	Pens, Pencils etc
+            5.	Rough Papers/Books
+            6.	Scientific Calculator
+            7.	Stapler and Punch holes
+            8.	Hangars for clothes
+            
+            Necessary Things
+            1.	Academic Original Documents (To be submitted for verification, EAMCET Documents, Xeroxes #Do whatever is asked by college management)
+            2.	Other Personal Documents (Scholarship documents, Passport, Aadhaar Card, Passport sized photos)
+            3.	Alarm Clock
+            4.	Pendrive
+            5.	Laptop
+            6.	Iron 
+            7.	Clips to hang your clothes 
+            8.	Torch /Emergency Light
+            9.	Bring anything that interests you or you have a passion for!
+            10.	Gaming accessories
+            </p>
+    </div>
+
+    <button class="collapsible">2) When should i start worrying ( when are mid and sem exam?)</button>
+    <div class="content">
+        <p>
+            Most people in your friend group and most of your batchmates will only worry about exams one day before they have it
+            As a fresher, it is advised for you to maintain a good gpa in your first year, as it is easier to get good grades in 1st year compared to the latter years
+            
+            Check the academic calendar from the college website for more info regarding dates
+            https://sreenidhi.edu.in/academic-calendars/
+            
+            </p>
+    </div>
+    <button class="collapsible">3) what is the minimum attendance and how do i check mine?</button>
+    <div class="content">
+        <p>
+            The minimum attendance is 75% with a 10% relaxation with a condonation fee, so it is in actuality a 65%
+You can check your attendance using a student created attendance portal  
+
+https://snist.netlify.app/login
+
+            </p>
+    </div>
+    <button class="collapsible">4)what are clubs? And should i join them?</button>
+    <div class="content">
+        <p>
+            Clubs are student groups that share a common interest in a field, you will find multiple clubs in SNIST here is the list<br>
+<br>
+1. Robotics Club · <br>
+2. Art's Club · <br>
+3. Tech Vision Club ·<br>
+4. ECA Club ·<br>
+5. Bachpan Prayas Club ·<br>
+6. SPC<br>
+7. IEEE<br>
+8. Electronix club<br>
+9. AI club<br>
+10. Sports club<br>
+11. NSS<br>
+<br>
+Do note, Join clubs in the first year but not many, make sure to focus on one where there's a better chance of promotion and the one you have a genuine interest in . Don't join clubs after first year, they will just slave off your labour and won't reward you.
+
+
+            </p>
+    </div>
+    <button class="collapsible">6) what are the places to eat around the campus and is there a stationary?</button>
+    <div class="content">
+        <img src = {{url_for('static', filename='/public/college.png')}}>
+            
+    </div>
+    <button class="collapsible">7) what is a mentor and why are they important for you?</button>
+    <div class="content">
+        <p>Several students decide midway through the school year that they are not interested in engineering. Maybe they don’t want to work in their field of study. Make sure you’re getting the correct guidance and making an informed decision based on your interests and not the aptitude to overcome this type of difficulty, which is common and manageable.
+        You can get help with that via mentoring. Find yourself a mentor. In order to help you discover your ideal job path, they offer comprehensive career assessments to help you identify the points where your personality, interests, and abilities come together.
+        </p>
+            
+    </div>
+    <button class="collapsible">8) How do i make friends and become more social?</button>
+    <div class="content">
+        <p>If you want to pick and choose your buddies, it won’t work. Your degree’s most crucial components are networking, interacting with others, and receiving or offering assistance. Maintain a positive social profile since you never know who you might need to aid you in the future. It’s possible that you won’t always get to work with the partner you wanted, but view it as a challenge and develop the ability to get along with and collaborate with a variety of people. Keep in mind that a good leader goes alongside the group, not in front of it.
+        </p>
+            
+    </div>
+</div>
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+
+</body>
+</html>

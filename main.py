@@ -14,8 +14,7 @@ questions = db['questions']
 # Routes
 @app.route('/')
 def index():
-    reviews = collection.find({})
-    return redirect('search')
+    return redirect('home')
 
 # @app.route('/add_review/<professorid>', methods=['POST'])
 # def add_review(professorid):
@@ -98,6 +97,17 @@ def discuss(questionid):
 ))
     
         
+@app.route('/faqs')
+def faqs():
+    return render_template('faqs.html')
 
+@app.route('/upload')
+def upload():
+    return render_template('upload.html')
+
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
 if __name__ == '__main__':
     app.run(debug=True)

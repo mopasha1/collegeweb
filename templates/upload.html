@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Files</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        section {
+            background-color: rgba(11, 235, 243, 0.525);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        input[type="submit"] {
+            color: aliceblue;
+            background-color: blue;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Professor Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/discussions">Discussions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/faqs">FAQs</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <center>
+            <h1>COLLEGE PORTAL</h1>
+        </center>
+    </div>
+    <section>
+        <center>
+            <h2>UPLOAD PYQ</h2>
+        </center>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label for="semister">Semester:</label>
+            <select id="semister" name="semister" class="form-control">
+                <option value="sem I">Sem I</option>
+                <option value="sem II">Sem II</option>
+                <option value="sem III">Sem III</option>
+                <option value="sem IV">Sem IV</option>
+                <option value="sem V">Sem V</option>
+                <option value="sem VI">Sem VI</option>
+                <option value="sem VII">Sem VII</option>
+                <option value="sem VIII">Sem VIII</option>
+            </select>
+            <br><br>
+            <label for="ppt">Upload PDFs:</label>
+            <input type="file" id="ppt" name="ppt" accept=".pdf" multiple class="form-control-file">
+            <br><br>
+            <input type="submit" value="Upload" class="btn btn-primary">
+        </form>
+    </section>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
