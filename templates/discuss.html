@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.tiny.cloud/1/api_key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <script>
+          tinymce.init({
+            selector: 'textarea#default-editor',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+              { value: 'First.Name', title: 'First Name' },
+              { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+          });
+        </script>
+    <title>Discussions Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS for discussions page -->
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: 1px solid #dee2e6;
+            border-radius: .25rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            color: #333;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            color: #fff;
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Professor Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/discussions">Discussions</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>{{ question.subject }}</h1>
+
+        <!-- Original Post -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title"><i>Original Post</i></h5><br><br>
+                <p class="card-text"><strong>Poster Name:</strong> {{ question.author }}</p>
+                <p class="card-text"><strong>Text:<strong><br><br>{{ question.text | safe}}</p>
+                
+            </div>
+        </div>
+
+        <!-- Comments Section -->
+        <h2>Comments</h2>
+
+        <!-- Loop through comments -->
+        {% for comment in question['responses'] %}
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Comment by {{ comment.author }}</h5>
+                <p class="card-text">{{ comment.content | safe}}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Form to add a new comment -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Comment</h5>
+                <form id='submit-form' method="post">
+                    <div class="form-group">
+                        <label for="author">Your Name:</label>
+                        <input type="text" class="form-control" id="author" name="author" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Comment:</label>
+                        <textarea id="default-editor" name="content" id="content"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

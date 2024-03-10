@@ -24,6 +24,19 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Your custom CSS -->
+    <style>
+        .image-container {
+            display: flex;
+            justify-content: center; /* Horizontally center */
+            align-items: center; /* Vertically center */
+            height: 300px; /* Set a height for the container */
+          }
+          
+          .image-container img {
+            max-width: 100%; /* Ensure the image doesn't exceed the container width */
+            max-height: 100%; /* Ensure the image doesn't exceed the container height */
+          }
+    </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 
@@ -37,20 +50,27 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/discussions">Discussions</a>
                 </li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <h1>Professor Description</h1><br>
+        <h1>{{professor['name']}}</h1><br>
+        <div class="image-container">
+
+        <img src="{{professor['image_url']}}" alt="Professor Image">
+        </div><br><br>
+
         <div class="professor-description">
-            <p><strong>Professor Name:</strong> {{professor['name']}}</p>
             <p><strong>Average Rating:</strong> {{professor['avg_rating']}}</p>
             <p><strong>Subjects:</strong> {{professor['subjects']}}</p>
             <p><strong>Description:</strong> {{professor['description']}}</p>

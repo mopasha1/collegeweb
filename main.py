@@ -10,6 +10,7 @@ tinymce.init_app(app)
 client = MongoClient('localhost', 27017)
 db = client['rating_and_reviews']
 collection = db['reviews']
+questions = db['questions']
 # Routes
 @app.route('/')
 def index():
@@ -29,6 +30,8 @@ def search():
         return render_template('search.html', professors=search_results)
     if request.method == 'GET':
         return render_template('search.html')
+    
+    
 @app.route('/search_results', methods=['GET', 'POST'])
 def search_results():
     return render_template('search_results.html')
@@ -59,6 +62,42 @@ def view(professorid):
         # Perform the update operation
         collection.update_one(filter_query, update_query)
     return redirect(url_for('view', professorid=professorid))
+
+@app.route('/discussions', methods=['GET', 'POST'])
+def discussions():
+    if request.method == 'GET':
+        ques = questions.find({})
+
+        return render_template('discussions.html', questions=ques)
+    if request.method == 'POST':
+        question = {
+            'author': request.form['author'],
+            'subject': request.form['topic'],
+            'text': request.form['text'],
+            'responses':[]
+        }
+        questions.insert_one(question)
+        return redirect(url_for('discussions'))
+    
+@app.route('/discuss/<questionid>', methods=['GET', 'POST'])
+def discuss(questionid):
+    if request.method == 'GET':
+        q = questions.find_one({'_id': ObjectId(questionid)})
+
+        return render_template('discuss.html', question=q)
+    if request.method == 'POST':
+        comment = {
+            'author': request.form['author'],
+            'content': request.form['content']
+        }
+        filter_query = {'_id': ObjectId(questionid)}  
+        update_query = {
+        '$push': {'responses': comment}}
+        questions.update_one(filter_query, update_query)
+        return redirect(url_for('discuss', questionid=questionid, question=questions.find_one({'_id': ObjectId(questionid)})
+))
+    
+        
 
 if __name__ == '__main__':
     app.run(debug=True)

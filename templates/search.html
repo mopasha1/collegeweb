@@ -120,10 +120,35 @@
             color: #666;
         }
     </style>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Professor Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/discussions">Discussions</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <h1>Search Page</h1>
+        <h1>Search for professors</h1>
         <form id="search-form" method="post">
         <div class="search-form">
             <input type="text" class="search-input" name="search-input" id = "search-input" placeholder="Enter your search query...">
@@ -135,7 +160,7 @@
             <!-- Example professor card -->
             {% for result in professors%}
             <div class="result-card example-professor" onclick="location.href='/view/{{result['_id']}}';"style="cursor: pointer;">
-                <img src="C:\Users\moizp\Pictures\bug.png" alt="Professor Image">
+                <img src="{{result['image_url']}}" alt="Professor Image">
                 <div class="result-card-content">
                     <div class="professor-name">{{result['name']}}</div>
                     <div class="rating">
