@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Professor Description</title>
+    
+        <script src="https://cdn.tiny.cloud/1/api_key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <script>
+          tinymce.init({
+            selector: 'textarea#default-editor',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+              { value: 'First.Name', title: 'First Name' },
+              { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+          });
+        </script>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Professor Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">Search</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>Professor Description</h1><br>
+        <div class="professor-description">
+            <p><strong>Professor Name:</strong> {{professor['name']}}</p>
+            <p><strong>Average Rating:</strong> {{professor['avg_rating']}}</p>
+            <p><strong>Subjects:</strong> {{professor['subjects']}}</p>
+            <p><strong>Description:</strong> {{professor['description']}}</p>
+        </div>
+        <div class="reviews">
+            <h2>Reviews</h2>
+            {% for review in professor['reviews']%}
+            <div class="review">
+                <div class="reviewer">{{review['name']}}</div>
+                <div class="rating">Rating: {{review['rating']}}</div>
+                <div class="comment">{{review['comment'] | safe}}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="add-review-form">
+            <h2>Add Review</h2>
+            <form id="review-form" method="post">
+                <div>
+                    <label for="name">Your Name:</label><br>
+                    <input type="text" id="name" name="name" required><br>
+                </div>
+                <label for="rate">Your rating:</label><br>
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                </div><br><br><br>
+                <div>
+                    <label for="class">Class the professor took for you:</label><br>
+                    <textarea id="class" name="class" rows="4" required></textarea><br>
+                </div>
+                <div>
+                    <label for="comment">Comment:</label><br>
+                    <textarea id="default-editor" name="comment"></textarea>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

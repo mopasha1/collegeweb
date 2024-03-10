@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .search-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-results {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .result-card {
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .result-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .result-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .result-card-content {
+            padding: 20px;
+        }
+
+        .professor-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .star-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .star-rating .star {
+            color: #ffc107;
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .star-rating .star.full {
+            color: #ffc107;
+        }
+
+        .star-rating .star.empty {
+            color: #ccc;
+        }
+
+        .professor-rating {
+            font-size: 16px;
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+
+        .professor-subjects {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Page</h1>
+        <form id="search-form" method="post">
+        <div class="search-form">
+            <input type="text" class="search-input" name="search-input" id = "search-input" placeholder="Enter your search query...">
+            <button class="search-btn" type="submit">Search</button>
+        
+        </div>
+    </form>
+        <div class="search-results">
+            <!-- Example professor card -->
+            {% for result in professors%}
+            <div class="result-card example-professor" onclick="location.href='/view/{{result['_id']}}';"style="cursor: pointer;">
+                <img src="C:\Users\moizp\Pictures\bug.png" alt="Professor Image">
+                <div class="result-card-content">
+                    <div class="professor-name">{{result['name']}}</div>
+                    <div class="rating">
+                        <span class="stars" style="width: {{ result['avg_rating'] * 20 }}%;"></span>
+                    </div>
+                    <div class="professor-rating">Average Rating: {{result['avg_rating']}}</div>
+                    <div class="professor-subjects">Subjects: {{result['subjects']}}</div>
+                </div>
+            </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Your custom JavaScript -->
+    <script>
+        // Function to dynamically generate star ratings
+        document.addEventListener('DOMContentLoaded', function () {
+            var stars = document.querySelectorAll('.stars');
+            stars.forEach(function (star) {
+                var rating = parseFloat(star.style.width) / 20;
+                var roundedRating = Math.round(rating * 2) / 2;
+                var html = '';
+                for (var i = 1; i <= 5; i++) {
+                    if (roundedRating >= i) {
+                        html += '<i class="fas fa-star"></i>';
+                    } else if (roundedRating + 0.5 === i) {
+                        html += '<i class="fas fa-star-half-alt"></i>';
+                    } else {
+                        html += '<i class="far fa-star"></i>';
+                    }
+                }
+                star.innerHTML = html;
+            });
+        });
+    </script>
+    
+</body>
+</html>
