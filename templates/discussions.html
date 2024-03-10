@@ -20,11 +20,8 @@
         ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
       });
     </script>
-    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Your custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .container {
@@ -48,14 +45,14 @@
 
         .btn-primary {
             color: #fff;
-            background-color: #28a745; /* Green */
-            border-color: #28a745; /* Green */
+            background-color: #28a745; 
+            border-color: #28a745; 
         }
 
         .btn-primary:hover {
             color: #fff;
-            background-color: #218838; /* Darker Green */
-            border-color: #1e7e34; /* Darker Green */
+            background-color: #218838;
+            border-color: #1e7e34; 
         }
 
 
@@ -134,12 +131,10 @@
         {% endfor %}
     </div>
 
-    <!-- Bootstrap JavaScript and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Custom JavaScript for toggling review form -->
     <script>
         function toggleReviewForm() {
             var reviewForm = document.querySelector('.review-form');
